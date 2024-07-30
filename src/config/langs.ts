@@ -6,6 +6,7 @@ export const editedSuffices = [
   'измененный',
   'ha editado',
   '編集済み',
+  'upraveno', // cs-CZ
 ];
 export const photosDirs = [
   'Google Photos',
@@ -13,6 +14,7 @@ export const photosDirs = [
   'Google Fotoğraflar',
   'Google Фото',
   'Google フォト',
+  'Fotky Google', // cs-CZ
 ];
 export const untitledDirs = [
   'Untitled',
@@ -21,4 +23,5 @@ export const untitledDirs = [
   'Без названия',
   'Sin título',
   '無題',
+  'Bez názvu', // cs-CZ
 ];
