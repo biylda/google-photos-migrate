@@ -1,4 +1,4 @@
-import { mkdir, readdir } from 'fs/promises';
+import { readdir } from 'fs/promises';
 import { basename, join } from 'path';
 import { untitledDirs } from '../config/langs';
 import { migrateDirFlatGen } from './migrate-flat';
@@ -22,8 +22,6 @@ async function* _restructureAndProcess(
     const outDir = `${migCtx.outputDir}/${albumName}`;
     const errDir = `${migCtx.errorDir}/${albumName}`;
 
-    await mkdir(outDir, { recursive: true });
-    await mkdir(errDir, { recursive: true });
     yield* migrateDirFlatGen({
       ...migCtx,
       inputDir: folder,
