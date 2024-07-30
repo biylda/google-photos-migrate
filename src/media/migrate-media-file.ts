@@ -69,8 +69,16 @@ export async function migrateMediaFile(
   }
   mediaFileInfo.jsonPath = jsonPath;
 
-  const metaBase =
-    (await readMetaTitle(mediaFileInfo)) ?? basename(mediaFileInfo.path);
+  let metaTitle = await readMetaTitle(mediaFileInfo);
+  // ignore title for generated content to avoid deduplication
+  if (
+    metaTitle &&
+    ['MOVIE.mp4', 'EFFECTS.jpg', 'COLOR_POP.jpg'].includes(metaTitle)
+  ) {
+    metaTitle = undefined;
+  }
+
+  const metaBase = metaTitle ?? basename(mediaFileInfo.path);
   const outExtRename = getOutExtRename(
     ext,
     metaBase ?? basename(mediaFileInfo.path),
