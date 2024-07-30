@@ -10,9 +10,11 @@ async function* _restructureAndProcess(
   migCtx: FullMigrationContext,
 ) {
   for (const folder of folders) {
-    processingAlbums && migCtx.log(`Processing album ${folder}...`);
+    migCtx.log(`Processing album ${folder}...`);
 
-    let albumName = processingAlbums ? basename(folder) : 'Photos';
+    let albumName = processingAlbums
+      ? basename(folder)
+      : basename(folder).replace('Photos from ', '');
     for (const untitledName of untitledDirs) {
       if (albumName.startsWith(`${untitledName}(`)) {
         albumName = untitledName;
